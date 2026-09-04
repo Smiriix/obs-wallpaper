@@ -37,5 +37,21 @@ body {
         letter-spacing: .1em;
         margin-bottom: 20px;
     }
-    &__grid {}
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: unset;
+            opacity: .5;
+            transition: .3s ease;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
 }
