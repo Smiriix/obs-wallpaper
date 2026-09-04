@@ -46,11 +46,17 @@ body {
             display: block;
             width: 100%;
             height: unset;
-            opacity: .5;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 8px 1px #0007;
             transition: .3s ease;
             cursor: pointer;
+            text-align: center;
+            color: #fff;
+
             &:hover {
-                opacity: 1;
+                transform: scale(1.1)
             }
         }
     }
