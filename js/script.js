@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     imgItem.alt = item.name;
                     imgItem.addEventListener("click", () => {
                         let copyText = document.createElement("input");
-                        copyText.value = `wallpaper.html?image=${item.download_url}`;
+                        copyText.value = `https://smiriix.github.io/obs-wallpaper/wallpaper.html?image=${item.download_url}`;
                         document.body.appendChild(copyText);
                         copyText.select();
                         document.execCommand("copy");
