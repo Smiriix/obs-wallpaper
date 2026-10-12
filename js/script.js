@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const listWrapper = document.querySelector(".wallpaper--list__grid");
 
-    fetch('./../list.json')
+    fetch('/obs-wallpaper/list.json')
         .then(data => data.json())
         .then(result => {
             // console.log(result);
