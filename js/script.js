@@ -1,38 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     const listWrapper = document.querySelector(".wallpaper--list__grid");
 
-    const observer = new IntersectionObserver((items) => {
-        items.forEach((item) => {
-            if (item.isIntersecting) {
-                item.target.src = item.target.dataset.href;
-            }else{
-                item.target.src = '';
-            }
-        });
-    });
-
-    fetch('https://api.github.com/repos/Smiriix/obs-wallpaper/contents/assets/wallpaper?ref=main')
+    fetch('./../list.json')
         .then(data => data.json())
         .then(result => {
             // console.log(result);
             if (result.length) {
                 result.forEach(item => {
-                    const imgItem = document.createElement("img");
-                    // imgItem.src = item.download_url;
-                    imgItem.href = '#';
-                    imgItem.dataset.href = item.download_url;
-                    imgItem.alt = item.name;
-                    imgItem.addEventListener("click", () => {
-                        let copyText = document.createElement("input");
-                        copyText.value = `https://smiriix.github.io/obs-wallpaper/wallpaper.html?image=${item.download_url}`;
-                        document.body.appendChild(copyText);
-                        copyText.select();
-                        document.execCommand("copy");
-                        alert("Ссылка на изображение было скопировано");
-                        copyText.remove();
-                    });
-                    observer.observe(imgItem);
-                    listWrapper.appendChild(imgItem);
+                    const imgItem = new Image();
+                    imgItem.onload = () => {
+                        imgItem.addEventListener("click", () => {
+                            let copyText = document.createElement("input");
+                            copyText.value = `https://smiriix.github.io/obs-wallpaper/wallpaper.html?image=${item}`;
+                            document.body.appendChild(copyText);
+                            copyText.select();
+                            document.execCommand("copy");
+                            alert("Ссылка на изображение было скопировано");
+                            copyText.remove();
+                        });
+                        listWrapper.appendChild(imgItem);
+                    }
+
+                    imgItem.src = item;
                 });
             }
         })
